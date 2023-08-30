@@ -1,0 +1,30 @@
+#server.port=6363
+
+#spring.security.user.name=Derangula
+#spring.security.user.password=Kumar1
+#spring.autoconfigure.exclude= org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+spring:
+ output:
+    ansi:
+      enabled: always
+ datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/javatechiedev
+    username: root
+    password: ecommerce123@D
+ jpa:
+    generate-ddl: true
+    show-sql: true
+ profiles:
+    active: "dev"
+ application:
+    name: Ecommerce Application
+   # message: "application running in Dev"
+server:
+  port: 6363
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        

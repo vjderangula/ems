@@ -23,7 +23,7 @@ public class SecurityDemoController {
 	@GetMapping("/home")
 	public String home() {
 		
-		return "Welcome to Home";
+		return "Welcome to Employee Management System Home";
 	}
 
 }

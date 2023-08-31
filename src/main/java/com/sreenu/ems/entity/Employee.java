@@ -28,5 +28,11 @@ public double salary;
 
 public String email;
 
+public String userName;
+
+public String password;
+
+public String roles;
+
 
 }

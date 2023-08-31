@@ -2,6 +2,8 @@ com\sreenu\ems\entity\Employee.class
 com\sreenu\ems\controller\EmployeeController.class
 com\sreenu\ems\controller\SecurityDemoController.class
 com\sreenu\ems\repository\EmployeeRepository.class
+com\sreenu\ems\service\EmployeeUserDetails.class
+com\sreenu\ems\service\EmployeeUserDetailsService.class
 com\sreenu\ems\EmsApplication.class
 com\sreenu\ems\config\EMSSecurityConfigUpgraded.class
 com\sreenu\ems\service\EmployeeService.class

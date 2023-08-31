@@ -13,6 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.sreenu.ems.service.EmployeeUserDetailsService;
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -20,16 +22,17 @@ public class EMSSecurityConfigUpgraded {
 	
 	@Bean
 	protected UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
-		UserDetails user = User.withUsername("Derangula")
-				.password(passwordEncoder.encode("Kumar1"))
-				.roles("EMPLOYEE").build();
-		UserDetails adminUser = User.withUsername("Narayan")
-				.password(passwordEncoder.encode("Derangula1"))
-				.roles("HR").build();
-		UserDetails admin = User.withUsername("Moneeshwar")
-				.password(passwordEncoder.encode("Derangula1"))
-				.roles("HR","MANAGER").build();
-		return new InMemoryUserDetailsManager(user,adminUser,admin);
+		/*
+		 * UserDetails user = User.withUsername("Derangula")
+		 * .password(passwordEncoder.encode("Kumar1")) .roles("EMPLOYEE").build();
+		 * UserDetails adminUser = User.withUsername("Narayan")
+		 * .password(passwordEncoder.encode("Derangula1")) .roles("HR").build();
+		 * UserDetails admin = User.withUsername("Moneeshwar")
+		 * .password(passwordEncoder.encode("Derangula1"))
+		 * .roles("HR","MANAGER").build(); return new
+		 * InMemoryUserDetailsManager(user,adminUser,admin);
+		 */
+		return new EmployeeUserDetailsService();
 		
 	}
 	/*
@@ -45,7 +48,7 @@ public class EMSSecurityConfigUpgraded {
 	protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 				
 		return http.authorizeRequests()
-		.antMatchers("/employees/welcome").permitAll()
+		.antMatchers("/employees/welcome", "/employees/create").permitAll()
 		.and()
 		.authorizeRequests().antMatchers("/employees/**")
 		.authenticated().and().httpBasic().and().csrf()
